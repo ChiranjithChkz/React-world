@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './country.css';
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountries}) => {
 
    // console.log(country.languages.languages.eng)
 
    const [visited, setVisited] = useState(false);
+   console.log(handleVisitedCountries);
    
     const handleVisited = () =>{
        // setVisited(true);
@@ -22,12 +23,13 @@ const Country = ({ country }) => {
 
     //third
     setVisited(!visited);
+    handleVisitedCountries(country)
 
     }
     return (
         <div className={`country ${visited && 'country-visited'}`}> 
 
-        
+
             <img src={country?.flags?.flags?.png} alt={country.flags.flags.alt} />
             <p>Name: {country.name.common}</p>
             <p>Capital: {country.capital.capital}</p>
